@@ -19,13 +19,11 @@ const CreateProject = async (req: NextApiRequest, res: NextApiResponse) => {
       const Date = GetDateFormat();
       const firestore = getFirestore(firebase);
       const reqBody: ProjectDTO = JSON.parse(req.body);
-      console.log(reqBody);
       const docRef = await addDoc(collection(firestore, "Project"), {
         ...reqBody,
         datetime: Date,
       });
-
-      res.status(200).json({ message: docRef.id });
+      res.status(200).json({ docId: docRef.id });
     } catch (e) {
       console.log("실패: " + e);
     }
