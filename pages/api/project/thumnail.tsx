@@ -18,7 +18,7 @@ const GetProjectThumnail = async (req: NextApiRequest, res: NextApiResponse) => 
 
     try {
         const querySnapshotMenuCatagoryList = await getDocs(
-            query(collection(firestore, "Project"), orderBy('datetime'))
+            query(collection(firestore, "Project"), orderBy('datetime', "desc"))
         );
 
         querySnapshotMenuCatagoryList.forEach((c) =>
