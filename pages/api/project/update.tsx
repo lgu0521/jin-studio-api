@@ -19,7 +19,7 @@ const UpdateProject = async (req: NextApiRequest, res: NextApiResponse) => {
             const newDocRef = doc(firestore, "Project", reqBody.id);
             const docUpdate = await updateDoc(newDocRef, reqBody);
 
-            res.status(200).json({ message: "success" });
+            res.status(200).json({ docId: reqBody.id });
         } catch (e) {
             console.log("실패: " + e);
         }
