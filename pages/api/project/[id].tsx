@@ -13,13 +13,11 @@ const cors = RunMiddleware(
 
 const ProjectPage = async (req: NextApiRequest, res: NextApiResponse) => {
     await cors(req, res);
-    const {
-        query: { id },
-    } = req;
+    const { query: { id }} = req;
 
     const firestore = getFirestore(firebase);
     var resJsonData = {} as ProjectDTO;
-
+    console.log(id);
     try {
         const querySnapshot = await doc(firestore, "Project", id as string);
         const getDocQeury = await getDoc(querySnapshot);
