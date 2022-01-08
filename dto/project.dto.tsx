@@ -1,9 +1,10 @@
+import { Timestamp } from "firebase/firestore";
 import { ImageStoreageDTO, ImageStoreageWithOrderDTO } from "./image-storage.dto";
 import { ProjectContentDTO } from "./project-content.dto";
 
 export interface ProjectDTO extends ProjectSimpleDTO {
   content: ProjectContentItemDTO[];
-  datetime: string;
+  datetime: Timestamp;
 }
 
 export type ProjectSimpleDTO = {
@@ -23,6 +24,6 @@ export type NoticeDetailDTO = {
   id: string;
   title: string;
   content: string;
-  datetime: string;
+  datetime: Timestamp;
   isNotice: boolean;
 };

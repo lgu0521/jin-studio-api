@@ -17,7 +17,7 @@ const ProjectPage = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const firestore = getFirestore(firebase);
     var resJsonData = {} as ProjectDTO;
-    console.log(id);
+
     try {
         const querySnapshot = await doc(firestore, "Project", id as string);
         const getDocQeury = await getDoc(querySnapshot);
@@ -29,7 +29,7 @@ const ProjectPage = async (req: NextApiRequest, res: NextApiResponse) => {
             resJsonData.catagory = projectData.catagory;
             resJsonData.thumbnail = projectData.thumbnail;
             resJsonData.content = projectData.content;
-            resJsonData.datetime = projectData.datetime;
+            resJsonData.datetime = projectData.datetime.toDate();
         }
         resJsonData.content.map((item, i) => {
             if (item.type == 'gallery' && Array.isArray(item.item)) {
